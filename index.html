@@ -27,7 +27,7 @@
 <p class="muted">Last updated: 7 November 2026. App: BLE Observer (com.lr.btobserver), by LR. Contact: luis.rodgi@gmail.com</p>
 
 <h2>In short</h2>
-<p>BLE Observer has no account, no ads and no analytics of its own. What it records stays on your phone unless you export it, and the developer never receives it.</p>
+<p>BLE Observer has no account and no ads. What it records stays on your phone unless you export it, and the developer never receives it. If you allow it, the app sends its developer error reports and usage statistics through Google Firebase, never with anything you record.</p>
 
 <h2>What the app records</h2>
 <ul>
@@ -42,6 +42,14 @@
 
 <h2>When it leaves the phone</h2>
 <p>Only when you export a file (Excel, CSV, JSON) or a session copy, to the place you choose. Before exporting you can pseudonymize addresses, names and identifiers, and remove positions. What happens to an exported file then depends on where you save or send it.</p>
+
+<h2>Error reports and usage statistics, if you allow them</h2>
+<p>The app asks you once, and you can change each one at any time in Settings. Both are off until you say yes.</p>
+<ul>
+  <li><strong>Error reports</strong> (Firebase Crashlytics): when the app fails, or Android stops or silences a scan, the error and where in the app's code it happened, with the app version, the phone model, the Android version, free memory and storage, and the session's settings, such as its intensity and screen-off mode. Anything in an error's text that could be an address, a UUID, a file name or a position is removed before it is sent.</li>
+  <li><strong>Usage statistics</strong> (Google Analytics for Firebase): which screens and options are used, how sessions end and what is exported (its format and options, never its content), with the app version, the Android version, the language and the approximate country and region, which Google derives from the connection, not from your location.</li>
+</ul>
+<p>Neither ever includes what you record: no device addresses, names, advertisement data, UUIDs, places, marks, labels, session names or positions. Firebase tells installations apart with a random identifier, not with your Google account, and the app never uses the advertising ID. Google processes the reports on the developer's behalf, under the data processing terms of Firebase and Google Analytics (<a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>). Error reports are kept for 90 days, and the detailed usage statistics for 2 months, after which Google keeps only totals. The legal basis is your consent: turning a switch off stops sending at once and deletes the reports not yet sent, and turning usage statistics off also resets their identifier.</p>
 
 <h2>Purchases</h2>
 <p>BLE Observer Pro is bought through Google Play. Google processes the payment under its own privacy policy (<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>); the app only learns whether your Google account owns Pro. Google Play's payment library, which the app includes for this, has internet access and may send Google diagnostic data about the purchase process.</p>
@@ -71,7 +79,7 @@
 <p class="muted">Última actualización: 7 de noviembre de 2026. App: Observador BLE (com.lr.btobserver), de LR. Contacto: luis.rodgi@gmail.com</p>
 
 <h2>En resumen</h2>
-<p>Observador BLE no tiene cuenta, ni anuncios, ni analítica propia. Lo que graba se queda en tu móvil salvo que lo exportes, y el desarrollador nunca lo recibe.</p>
+<p>Observador BLE no tiene cuenta ni anuncios. Lo que graba se queda en tu móvil salvo que lo exportes, y el desarrollador nunca lo recibe. Si lo permites, la app envía a su desarrollador informes de errores y estadísticas de uso a través de Google Firebase, nunca con nada de lo que grabas.</p>
 
 <h2>Qué graba la app</h2>
 <ul>
@@ -86,6 +94,14 @@
 
 <h2>Cuándo sale del móvil</h2>
 <p>Sólo cuando exportas un archivo (Excel, CSV, JSON) o una copia de la sesión, al sitio que elijas. Antes de exportar puedes seudonimizar direcciones, nombres e identificadores, y quitar las posiciones. Lo que pase después con un archivo exportado depende de dónde lo guardes o lo envíes.</p>
+
+<h2>Informes de errores y estadísticas de uso, si los permites</h2>
+<p>La app te lo pregunta una vez, y puedes cambiar cada uno cuando quieras en Ajustes. Los dos están apagados hasta que dices que sí.</p>
+<ul>
+  <li><strong>Informes de errores</strong> (Firebase Crashlytics): cuando la app falla, o Android para o silencia un escaneo, el error y en qué parte del código de la app pasó, con la versión de la app, el modelo del móvil, la versión de Android, la memoria y el espacio libres, y los ajustes de la sesión, como su intensidad y el modo con la pantalla apagada. Lo que en el texto de un error pudiera ser una dirección, un UUID, el nombre de un archivo o una posición se quita antes de enviarlo.</li>
+  <li><strong>Estadísticas de uso</strong> (Google Analytics para Firebase): qué pantallas y opciones se usan, cómo acaban las sesiones y qué se exporta (su formato y sus opciones, nunca su contenido), con la versión de la app, la versión de Android, el idioma y el país y la región aproximados, que Google saca de la conexión, no de tu ubicación.</li>
+</ul>
+<p>Ninguno lleva nunca lo que grabas: ni direcciones de aparatos, ni nombres, ni datos de anuncios, ni UUID, ni lugares, ni marcas, ni etiquetas, ni nombres de sesiones, ni posiciones. Firebase distingue las instalaciones con un identificador aleatorio, no con tu cuenta de Google, y la app nunca usa el identificador de publicidad. Google trata los informes por encargo del desarrollador, según las condiciones de tratamiento de datos de Firebase y de Google Analytics (<a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>). Los informes de errores se guardan 90 días, y las estadísticas de uso detalladas, 2 meses; después Google sólo guarda totales. La base legal es tu consentimiento: al apagar un interruptor se deja de enviar en el acto y se borran los informes que no se habían enviado, y al apagar las estadísticas de uso también se renueva su identificador.</p>
 
 <h2>Compras</h2>
 <p>Observador BLE Pro se compra en Google Play. Google procesa el pago según su propia política de privacidad (<a href="https://policies.google.com/privacy?hl=es">policies.google.com/privacy</a>); la app sólo sabe si tu cuenta de Google tiene Pro. La biblioteca de pagos de Google Play, que la app incluye para esto, tiene acceso a internet y puede enviar a Google datos de diagnóstico del proceso de compra.</p>
