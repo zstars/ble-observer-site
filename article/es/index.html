@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lo que oye un móvil: cinco horas de Bluetooth LE y cómo se esconden los aparatos tras direcciones que cambian</title>
+<meta name="description" content="Nueve grabaciones de Bluetooth LE en Android: cuánto duran las direcciones de Apple y Android, cómo rotan los localizadores y cómo agrupar direcciones en posibles aparatos.">
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .6rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  .byline { margin-bottom: 2rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+  table:has(th:nth-child(3)) td:nth-child(2), table:has(th:nth-child(3)) th:nth-child(2) { text-align: right; white-space: nowrap; }
+  li { margin: .3rem 0; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../../app/#es">Observador BLE</a> · <a href="../" hreflang="en">English</a> · <a href="../../">Política de privacidad</a></nav>
+<article>
+<h1>Lo que oye un móvil: cinco horas de Bluetooth LE y cómo se esconden los aparatos tras direcciones que cambian</h1>
+<p class="muted byline">Cifras de nueve grabaciones hechas con Observador BLE en noviembre de 2026, en España, con dos móviles Android. No se publica ninguna dirección, nombre de aparato ni lugar: solo recuentos.</p>
+<p>Si vas por la calle con el Bluetooth encendido, tu móvil oye cientos de mensajitos de radio por minuto. Móviles, relojes, auriculares, teles, localizadores y balizas los envían para que otros aparatos los encuentren. Quería ver cómo es ese tráfico durante más tiempo que un escaneo rápido. También quería saber cuánto dice de quien lleva esos aparatos.</p>
+<h2>Cómo se hizo</h2>
+<p>La app solo escucha. No se conecta, no empareja ni escribe en nada, salvo que le pidas leer un aparato concreto. Graba cada anuncio con su hora y su señal, interpreta los formatos conocidos junto a los bytes tal cual, y lo exporta todo.</p>
+<p>Fueron nueve sesiones, unas 4,8 horas en total, en interiores y en la calle, a distintas horas.</p>
+<h2>Qué hay</h2>
+<div class="tw"><table><thead><tr><th>Tipo</th><th>Direcciones oídas</th></tr></thead><tbody><tr><td>Todas</td><td>1.958</td></tr><tr><td>Apple «Nearby Info» (iPhone, iPad, Mac y Watch en uso)</td><td>470</td></tr><tr><td>Red Buscar (Find My) de Apple (AirTag, AirPods y otros accesorios)</td><td>433</td></tr><tr><td>Otros mensajes de Apple (emparejar AirPods, AirPlay, Handoff…)</td><td>405</td></tr><tr><td>Android y ChromeOS (Google Nearby, Quick Share)</td><td>248</td></tr><tr><td>Aparatos con un nombre legible</td><td>195</td></tr><tr><td>Samsung (teles, electrodomésticos…)</td><td>123</td></tr><tr><td>Ordenadores Windows</td><td>57</td></tr><tr><td>Otras redes de localizadores: Samsung Find, SmartTag, Tile, Google Find Hub</td><td>19</td></tr></tbody></table></div>
+<p>Llaman la atención dos cosas.</p>
+<p><strong>Apple domina.</strong> Es casi dos tercios de lo que se oye, y cada aparato de Apple envía varios tipos de mensaje.</p>
+<p><strong>Una «dirección» no es un «aparato».</strong> Casi todos los móviles, relojes y auriculares usan una dirección Bluetooth <em>aleatoria</em> y la cambian cada pocos minutos. Esas 1.958 direcciones eran, probablemente, unos cientos de aparatos.</p>
+<h2>Cuánto dura una dirección</h2>
+<p>Miré las direcciones que cambian, oídas al menos 20 veces, y solo las que aparecieron y desaparecieron dentro de la sesión. Así, el tiempo que se oyeron se acerca a lo que duraron. Son mínimos:</p>
+<div class="tw"><table><thead><tr><th>Tipo</th><th>Mediana del tiempo oída</th><th>Percentil 90</th></tr></thead><tbody><tr><td>Apple «Nearby Info»</td><td>12,3 min</td><td>18,4 min</td></tr><tr><td>Android / Google Nearby</td><td>2,9 min</td><td>8,8 min</td></tr><tr><td>Lo demás que rota</td><td>9,7 min</td><td>17,0 min</td></tr></tbody></table></div>
+<p>Se ve claro el cambio de unos 15 minutos de Apple. Los mensajes Nearby de Android rotan mucho más deprisa.</p>
+<h2>No todos los localizadores rotan igual</h2>
+<p>Las etiquetas de una misma marca no siempre se comportan igual. Entre los Tile de estas grabaciones, algunos mantuvieron la misma dirección más de diez minutos mientras cambiaba el identificador que llevan dentro del mensaje. Otros cambiaban de dirección cada pocos minutos, y su identificador a veces cambiaba con ella y a veces no.</p>
+<p>Ni la dirección ni el identificador, por separado, siguen a una etiqueta mucho tiempo. Juntos, y dentro de una sesión, normalmente sí: aparece una dirección nueva segundos después de que la anterior se calle, con la misma señal y el mismo formato de mensaje. Ese relevo es la pista principal para agrupar direcciones en posibles aparatos.</p>
+<h2>Agrupar, y sus límites</h2>
+<p>La app propone qué direcciones son probablemente del mismo aparato. Se basa en el relevo en el tiempo y en la señal, y en los datos que no cambian cuando cambia la dirección. Muestra el motivo de cada unión y deja confirmarla o separarla.</p>
+<p>Es una estimación, no una identificación. En una calle llena, varios móviles cambian de dirección a la vez y se equivoca. Y solo funciona dentro de una sesión, a propósito: unir un aparato entre días distintos sería seguir a una persona.</p>
+<p>Para investigar privacidad, lo interesante es lo contrario: <em>qué</em> datos no cambian al rotar. Cada uno hace que un aparato sea reconocible durante más tiempo del que pretendía su fabricante.</p>
+<h2>Por qué un escáner distinto</h2>
+<p>Casi todas las herramientas Bluetooth para el móvil giran en torno a un aparato: encontrarlo, conectarse, ver sus servicios, probarlo. Y lo hacen muy bien. Estudiar un <em>lugar</em> pide otra cosa:</p>
+<ul><li><strong>Un registro, no un instante.</strong> Horas de anuncios, guardados con su hora y su señal, para volver a ellos.</li><li><strong>Datos que salen del móvil enteros.</strong> Todo en una exportación, con lo que se haya leído de cada aparato a su lado, listo para una hoja de cálculo o un programa.</li><li><strong>Aparatos en vez de direcciones.</strong> En un sitio con mucha gente, una lista de cientos de direcciones aleatorias dice poco de lo que hay de verdad.</li><li><strong>Toda la escena de un vistazo,</strong> según lo fuerte que se oye cada cosa, junto al detalle de cada una.</li></ul>
+<p>Observador BLE está hecha para eso: sesiones, una exportación completa (Excel con una hoja que explica cada columna, CSV, o JSON con los bytes), agrupación de las direcciones que rotan y un mapa radial de señal con el móvil en el centro y un sector por tipo de aparato.</p>
+<h2>Ojo con</h2>
+<ul><li>Android decide qué puede oír una app. Con la pantalla apagada oye menos, y en los Samsung solo los fabricantes más comunes, salvo en el modo campo de la app.</li><li>La señal da cerca, medio o lejos, no metros.</li><li>Son nueve sesiones en una ciudad, no un estudio.</li></ul>
+<p class="note">Observador BLE es gratis en <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es">Google Play</a> (Android; en la UE, Estados Unidos, Reino Unido, Canadá y Australia), con un Pro de pago único para sesiones largas y exportaciones. La he hecho yo; me vienen muy bien opiniones de gente que trabaje con BLE.</p>
+</article>
+</main>
+</body>
+</html>

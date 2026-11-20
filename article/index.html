@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a phone hears: five hours of Bluetooth LE, and how devices hide behind rotating addresses</title>
+<meta name="description" content="Nine Bluetooth LE recordings on Android: how long Apple and Android addresses last, how tracker tags rotate, and how to group rotating addresses into likely devices.">
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .6rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  .byline { margin-bottom: 2rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+  table:has(th:nth-child(3)) td:nth-child(2), table:has(th:nth-child(3)) th:nth-child(2) { text-align: right; white-space: nowrap; }
+  li { margin: .3rem 0; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../app/">BLE Observer</a> · <a href="es/" hreflang="es">Español</a> · <a href="../">Privacy policy</a></nav>
+<article>
+<h1>What a phone hears: five hours of Bluetooth LE, and how devices hide behind rotating addresses</h1>
+<p class="muted byline">Figures from nine recordings made with BLE Observer in November 2026, in Spain, on two Android phones. No addresses, device names or places are published: only counts.</p>
+<p>Walk down a street with Bluetooth on and your phone hears hundreds of little radio messages per minute. Phones, watches, earbuds, TVs, item tags and beacons send them so that other devices can find them. I wanted to see what that traffic actually looks like over longer periods than a quick scan. I also wanted to know how much it says about the people carrying those devices.</p>
+<h2>The setup</h2>
+<p>The app only listens. It never connects, pairs or writes to anything unless you ask it to read one device. It records every advertisement with its timestamp and signal strength, decodes the known formats next to the raw bytes, and exports everything.</p>
+<p>Nine sessions, about 4.8 hours in total, indoors and outdoors, at different times of day.</p>
+<h2>What is out there</h2>
+<div class="tw"><table><thead><tr><th>Kind</th><th>Addresses heard</th></tr></thead><tbody><tr><td>All</td><td>1,958</td></tr><tr><td>Apple "Nearby Info" (iPhones, iPads, Macs, Watches in use)</td><td>470</td></tr><tr><td>Apple Find My network (AirTags, AirPods and other accessories)</td><td>433</td></tr><tr><td>Other Apple messages (AirPods pairing, AirPlay, Handoff…)</td><td>405</td></tr><tr><td>Android and ChromeOS (Google Nearby, Quick Share)</td><td>248</td></tr><tr><td>Devices with a readable name</td><td>195</td></tr><tr><td>Samsung (TVs, appliances…)</td><td>123</td></tr><tr><td>Windows PCs</td><td>57</td></tr><tr><td>Other tracker networks: Samsung Find, SmartTag, Tile, Google Find Hub</td><td>19</td></tr></tbody></table></div>
+<p>Two things stand out.</p>
+<p><strong>Apple dominates.</strong> Close to two thirds of what you hear, and every Apple device sends several kinds of messages.</p>
+<p><strong>"Addresses" are not "devices".</strong> Almost every phone, watch and earbud uses a <em>random</em> Bluetooth address and changes it every few minutes. 1,958 addresses were probably a few hundred devices.</p>
+<h2>How long an address lives</h2>
+<p>I looked at rotating addresses heard at least 20 times, and only those that appeared and disappeared well inside a session. That way, the time they were heard is close to how long they existed. These are lower bounds:</p>
+<div class="tw"><table><thead><tr><th>Kind</th><th>Median time heard</th><th>90th percentile</th></tr></thead><tbody><tr><td>Apple "Nearby Info"</td><td>12.3 min</td><td>18.4 min</td></tr><tr><td>Android / Google Nearby</td><td>2.9 min</td><td>8.8 min</td></tr><tr><td>Everything else that rotates</td><td>9.7 min</td><td>17.0 min</td></tr></tbody></table></div>
+<p>Apple's roughly 15-minute rotation shows clearly. Android's Nearby messages rotate much faster.</p>
+<h2>Not every tag rotates the same way</h2>
+<p>Item tags of the same brand do not always behave alike. Among the Tile tags in these recordings, some kept the same address for more than ten minutes while the identifier inside their message changed. Others changed their address every few minutes, and their identifier sometimes changed with it and sometimes did not.</p>
+<p>So neither the address nor the identifier alone follows a tag for long. Together, inside one session, they usually do: a new address appears seconds after the old one goes quiet, with the same signal strength and the same message format. That hand-off is the main clue for grouping addresses into likely devices.</p>
+<h2>Grouping, and its limits</h2>
+<p>The app proposes which addresses probably belong to the same device. Its clues are the hand-off timing and signal, plus the fields that stay constant when the address changes. It shows the reason for every link and lets you confirm or split it.</p>
+<p>It is an estimate, not an identification. In a crowded street several phones hand off at the same moment, and it gets things wrong. It also works only within one session, on purpose: linking a device across days would be following a person.</p>
+<p>For privacy research the interesting part is the opposite one: <em>which</em> fields stay the same across a rotation. Each of them makes a device linkable for longer than its manufacturer intended.</p>
+<h2>Why a different kind of scanner</h2>
+<p>Most Bluetooth tools for phones are built around one device: find it, connect, inspect its services, test it. They do that very well. Studying a <em>place</em> asks for something else:</p>
+<ul><li><strong>A record, not a moment.</strong> Hours of advertisements, kept with their time and signal, so you can come back to them.</li><li><strong>Data that leaves the phone in one piece.</strong> Everything in one export, with whatever was read from a device stored next to it, ready for a spreadsheet or a script.</li><li><strong>Devices rather than addresses.</strong> In a busy place, a flat list of hundreds of random addresses says little about what is really there.</li><li><strong>The whole scene at a glance,</strong> by how strongly each thing is heard, alongside the detail of any single one.</li></ul>
+<p>BLE Observer is built around that: sessions, a complete export (Excel with a sheet describing every column, CSV, or JSON with the raw bytes), grouping of rotating addresses, and a radial signal map with the phone in the centre and one sector per kind of device.</p>
+<h2>Caveats</h2>
+<ul><li>Android decides what an app can hear. With the screen off it hears less, and on Samsung phones it only hears the most common makers unless you use the app's field mode.</li><li>Signal strength gives near, middle or far, not metres.</li><li>These are nine sessions in one city, not a survey.</li></ul>
+<p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en">Google Play</a> (Android; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports. I made it; feedback from people who work with BLE is very welcome.</p>
+</article>
+</main>
+</body>
+</html>
