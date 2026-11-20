@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lo que oye un móvil: cinco horas de Bluetooth LE y cómo se esconden los aparatos tras direcciones que cambian</title>
 <meta name="description" content="Nueve grabaciones de Bluetooth LE en Android: cuánto duran las direcciones de Apple y Android, cómo rotan los localizadores y cómo agrupar direcciones en posibles aparatos.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/article/es/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/article/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/article/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/article/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lo que oye un móvil: cinco horas de Bluetooth LE y cómo se esconden los aparatos tras direcciones que cambian">
+<meta property="og:description" content="Nueve grabaciones de Bluetooth LE en Android: cuánto duran las direcciones de Apple y Android, cómo rotan los localizadores y cómo agrupar direcciones en posibles aparatos.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/article/es/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-es.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
   @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
@@ -59,8 +69,18 @@
 <p>Observador BLE está hecha para eso: sesiones, una exportación completa (Excel con una hoja que explica cada columna, CSV, o JSON con los bytes), agrupación de las direcciones que rotan y un mapa radial de señal con el móvil en el centro y un sector por tipo de aparato.</p>
 <h2>Ojo con</h2>
 <ul><li>Android decide qué puede oír una app. Con la pantalla apagada oye menos, y en los Samsung solo los fabricantes más comunes, salvo en el modo campo de la app.</li><li>La señal da cerca, medio o lejos, no metros.</li><li>Son nueve sesiones en una ciudad, no un estudio.</li></ul>
-<p class="note">Observador BLE es gratis en <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es">Google Play</a> (Android; en la UE, Estados Unidos, Reino Unido, Canadá y Australia), con un Pro de pago único para sesiones largas y exportaciones. La he hecho yo; me vienen muy bien opiniones de gente que trabaje con BLE.</p>
+<p class="note">Observador BLE es gratis en <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es&amp;referrer=utm_source%3Darticle_es">Google Play</a> (Android; en la UE, Estados Unidos, Reino Unido, Canadá y Australia), con un Pro de pago único para sesiones largas y exportaciones. La he hecho yo; me vienen muy bien opiniones de gente que trabaje con BLE.</p>
 </article>
 </main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
 </body>
 </html>

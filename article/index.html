@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What a phone hears: five hours of Bluetooth LE, and how devices hide behind rotating addresses</title>
 <meta name="description" content="Nine Bluetooth LE recordings on Android: how long Apple and Android addresses last, how tracker tags rotate, and how to group rotating addresses into likely devices.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/article/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/article/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/article/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/article/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What a phone hears: five hours of Bluetooth LE, and how devices hide behind rotating addresses">
+<meta property="og:description" content="Nine Bluetooth LE recordings on Android: how long Apple and Android addresses last, how tracker tags rotate, and how to group rotating addresses into likely devices.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/article/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
   @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
@@ -59,8 +69,18 @@
 <p>BLE Observer is built around that: sessions, a complete export (Excel with a sheet describing every column, CSV, or JSON with the raw bytes), grouping of rotating addresses, and a radial signal map with the phone in the centre and one sector per kind of device.</p>
 <h2>Caveats</h2>
 <ul><li>Android decides what an app can hear. With the screen off it hears less, and on Samsung phones it only hears the most common makers unless you use the app's field mode.</li><li>Signal strength gives near, middle or far, not metres.</li><li>These are nine sessions in one city, not a survey.</li></ul>
-<p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en">Google Play</a> (Android; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports. I made it; feedback from people who work with BLE is very welcome.</p>
+<p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en&amp;referrer=utm_source%3Darticle_en">Google Play</a> (Android; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports. I made it; feedback from people who work with BLE is very welcome.</p>
 </article>
 </main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
 </body>
 </html>
