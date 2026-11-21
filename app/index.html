@@ -2,106 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLE Observer</title>
-<meta name="description" content="Bluetooth LE scanner and logger for Android: record sessions, spot tracker tags, group rotating addresses into likely devices, export to Excel, CSV or JSON.">
-<link rel="canonical" href="https://zstars.github.io/ble-observer-site/app/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BLE Observer: Bluetooth LE scanner &amp; logger for Android">
-<meta property="og:description" content="Record the Bluetooth LE around you for minutes or hours, group rotating addresses into likely devices, and export to Excel, CSV or JSON. It only listens.">
-<meta property="og:url" content="https://zstars.github.io/ble-observer-site/app/">
-<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-en.png">
-<meta name="twitter:card" content="summary_large_image">
-<!-- Published at https://zstars.github.io/ble-observer-site/app/ (18-11-2026); article links added 20-11-2026. The site root stays the privacy policy, which Google Play links to.
-     Screenshots: copy play/graphics/raw/01-live.png, 10-trackers.png, 08-signal-map.png and 03-possible-device.png next to this file. -->
-<style>
-  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
-  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 56rem; margin: 0 auto; padding: 2rem 16px 3rem; }
-  header { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  header img { width: 72px; height: 72px; border-radius: 16px; }
-  h1 { font-size: 1.8rem; margin: 0; text-wrap: balance; }
-  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
-  .lead { font-size: 1.1rem; margin: 1rem 0; max-width: 42rem; }
-  .muted { color: var(--muted); font-size: .9rem; }
-  a { color: var(--accent); }
-  .cta { display: inline-block; background: var(--accent); color: var(--bg); padding: .7rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; margin: .5rem 0; }
-  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 1.5rem 0; }
-  .shots img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-  .card { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; }
-  .card h3 { margin: 0 0 .3rem; font-size: 1rem; }
-  .card p { margin: 0; font-size: .95rem; }
-  hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
-  nav { margin-bottom: 1rem; }
-</style>
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/">
+<meta http-equiv="refresh" content="0; url=../">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{font:16px/1.5 system-ui,sans-serif;margin:2rem 16px;background:#fbfbfe;color:#1b1c20}@media (prefers-color-scheme:dark){body{background:#121317;color:#e3e3e8}a{color:#a8c7fa}}</style>
+<script>location.replace('../' + location.search + location.hash)</script>
 </head>
-<body>
-<main>
-<nav class="muted"><a href="#en">English</a> · <a href="#es">Español</a> · <a href="../">Privacy policy</a></nav>
-
-<section id="en" lang="en">
-<header>
-  <img src="icon-512.png" alt="">
-  <div>
-    <h1>BLE Observer</h1>
-    <div class="muted">Bluetooth LE scanner &amp; logger for Android</div>
-  </div>
-</header>
-<p class="lead">Record the Bluetooth LE around you for minutes or hours. See what is there, which addresses are probably the same device, and take it all to Excel, CSV or JSON. It only listens.</p>
-<a class="cta" href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en&amp;referrer=utm_source%3Dsite_app">Get it on Google Play</a>
-<div class="muted">Android 13 or later. Free; a one-time Pro unlocks long sessions and exports.</div>
-
-<div class="shots">
-  <img src="01-live.png" alt="Live list of nearby Bluetooth devices with their signal over time">
-  <img src="10-trackers.png" alt="Searching for 'tracker' lists Find My, Tile, SmartTag and Samsung Find tags">
-  <img src="08-signal-map.png" alt="Radial signal map: the phone in the centre, each device placed by its median signal, one sector per kind">
-  <img src="03-possible-device.png" alt="A possible device made of several rotating addresses, with the reason for each link">
-</div>
-
-<div class="grid">
-  <div class="card"><h3>Sessions, not snapshots</h3><p>Every advertisement with its time and signal, marks for each place, and pauses recorded with their cause.</p></div>
-  <div class="card"><h3>Exports you can use</h3><p>Excel with a sheet that explains every column, CSV per table, JSON with each advertisement's raw bytes. What you read from a device goes with it.</p></div>
-  <div class="card"><h3>Addresses grouped into devices</h3><p>Phones and earbuds rotate their address every few minutes. The app proposes which ones are the same device and says why. Only within one session.</p></div>
-  <div class="card"><h3>Tracker tags</h3><p>Find My, Tile, Samsung SmartTag, Google Find Hub and Samsung Find stand out in yellow; search "tracker" to list them.</p></div>
-  <div class="card"><h3>Radial signal map</h3><p>Everything around you at a glance: near or far by median signal, grouped by kind. Also live while you record.</p></div>
-  <div class="card"><h3>Only listens</h3><p>Never writes, subscribes or pairs. Connects only to read a device's services when you ask. No account, no ads.</p></div>
-</div>
-
-<h2>Read more</h2>
-<p><a href="../article/">What a phone hears: five hours of Bluetooth LE</a>: how long Apple and Android addresses last, and how tracker tags rotate.</p>
-
-</section>
-
-<hr>
-
-<section id="es" lang="es">
-<header>
-  <img src="icon-512.png" alt="">
-  <div>
-    <h1>Observador BLE</h1>
-    <div class="muted">Escáner y registro de Bluetooth LE para Android</div>
-  </div>
-</header>
-<p class="lead">Graba el Bluetooth LE de tu alrededor durante minutos u horas. Mira qué hay, qué direcciones son probablemente el mismo aparato, y llévatelo todo a Excel, CSV o JSON. Solo escucha.</p>
-<a class="cta" href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es&amp;referrer=utm_source%3Dsite_app">Disponible en Google Play</a>
-<div class="muted">Android 13 o posterior. Gratis; un Pro de pago único da sesiones largas y exportaciones.</div>
-
-<div class="grid" style="margin-top:1.5rem">
-  <div class="card"><h3>Sesiones, no fotos sueltas</h3><p>Cada anuncio con su hora y su señal, marcas para cada lugar, y las pausas anotadas con su causa.</p></div>
-  <div class="card"><h3>Exportaciones que sirven</h3><p>Excel con una hoja que explica cada columna, CSV por tabla y JSON con los bytes de cada anuncio. Lo que lees de un aparato va con él.</p></div>
-  <div class="card"><h3>Direcciones agrupadas en aparatos</h3><p>Móviles y auriculares cambian de dirección cada pocos minutos. La app propone cuáles son el mismo aparato y dice por qué. Solo dentro de una sesión.</p></div>
-  <div class="card"><h3>Localizadores</h3><p>Find My, Tile, Samsung SmartTag, Google Find Hub y Samsung Find salen en amarillo; busca «localizador» para verlos todos.</p></div>
-  <div class="card"><h3>Mapa radial de señal</h3><p>Todo lo de alrededor de un vistazo: cerca o lejos según la señal mediana, agrupado por tipo. También en directo mientras grabas.</p></div>
-  <div class="card"><h3>Solo escucha</h3><p>Nunca escribe, ni se suscribe, ni empareja. Solo se conecta para leer los servicios de un aparato cuando se lo pides. Sin cuenta y sin anuncios.</p></div>
-</div>
-
-<h2>Para saber más</h2>
-<p><a href="../article/es/">Lo que oye un móvil: cinco horas de Bluetooth LE</a>: cuánto duran las direcciones de Apple y Android, y cómo rotan los localizadores.</p>
-
-</section>
-</main>
-</body>
+<body><p>BLE Observer has moved to <a href="../">zstars.github.io/ble-observer-site</a>.</p></body>
 </html>
