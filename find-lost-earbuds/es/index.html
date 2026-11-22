@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo encontrar unos auriculares Bluetooth perdidos con un móvil Android</title>
+<meta name="description" content="¿Auriculares Bluetooth perdidos cerca? Sigue la intensidad de su señal (dBm) con el móvil Android en un mapa en directo, paso a paso, y cuándo funciona y cuándo no.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/es/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo encontrar unos auriculares Bluetooth perdidos con un móvil Android">
+<meta property="og:description" content="¿Auriculares Bluetooth perdidos cerca? Sigue la intensidad de su señal (dBm) con el móvil Android en un mapa en directo, paso a paso, y cuándo funciona y cuándo no.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/find-lost-earbuds/es/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-es.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cómo encontrar unos auriculares Bluetooth perdidos con un móvil Android", "description": "¿Auriculares Bluetooth perdidos cerca? Sigue la intensidad de su señal (dBm) con el móvil Android en un mapa en directo, paso a paso, y cuándo funciona y cuándo no.", "inLanguage": "es", "datePublished": "2026-11-22", "url": "https://zstars.github.io/ble-observer-site/find-lost-earbuds/es/", "about": {"@type": "SoftwareApplication", "name": "Observador BLE", "operatingSystem": "Android 13+", "applicationCategory": "UtilitiesApplication", "url": "https://play.google.com/store/apps/details?id=com.lr.btobserver"}}</script>
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 1.2rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  li { margin: .3rem 0; }
+  code { font: .88em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card); padding: .1em .3em; border-radius: 4px; }
+  pre { background: var(--card); border-radius: 10px; padding: .9rem 1rem; overflow-x: auto; line-height: 1.45; }
+  pre code { background: none; padding: 0; font-size: .85rem; }
+  figure { margin: 1.5rem auto; max-width: 300px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  figcaption { color: var(--muted); font-size: .85rem; margin-top: .5rem; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../../#es">Observador BLE</a> · <a href="../" hreflang="en">English</a> · <a href="../../privacy/#es">Política de privacidad</a></nav>
+<article>
+<h1>Cómo encontrar unos auriculares Bluetooth perdidos con un móvil Android</h1>
+<p>Se te han caído los auriculares en casa, en el coche o entre los cojines del sofá. Están cerca, pero no los ves. Si todavía tienen batería, es muy probable que sigan emitiendo por Bluetooth, y el móvil puede oírlos. Con la intensidad de esa señal puedes saber si te acercas o te alejas.</p>
+<h2>Antes de nada: prueba lo oficial</h2>
+<ul><li><strong>AirPods:</strong> la app Buscar de Apple, en un iPhone o en icloud.com/find, los hace sonar y muestra dónde se oyeron por última vez.</li><li><strong>Auriculares Android con Find Hub</strong> (antes Encontrar mi dispositivo), como muchos Pixel Buds y Galaxy Buds: en la app Find Hub puedes hacerlos sonar.</li><li><strong>Galaxy Buds:</strong> también desde SmartThings Find.</li><li><strong>Si la app del fabricante tiene «buscar auriculares»,</strong> úsala primero: hacerlos sonar es lo más rápido.</li></ul>
+<p>Si nada de eso funciona, o tus auriculares no tienen esa opción, sigue leyendo.</p>
+<h2>Cuándo funciona y cuándo no</h2>
+<p>Funciona si los auriculares <strong>están encendidos y emitiendo</strong>. En la práctica:</p>
+<ul><li><strong>Sí suele funcionar:</strong> auriculares fuera de la funda y con batería, o la funda abierta. Muchos modelos anuncian su presencia cada pocos segundos cuando no están conectados a ningún móvil.</li><li><strong>Mejor desconectarlos:</strong> si siguen conectados a tu móvil, algunos dejan de anunciarse. Desactiva el Bluetooth de ese móvil un momento o busca desde otro.</li><li><strong>No funciona:</strong> sin batería, o dentro de la funda cerrada en muchos modelos. Ahí no queda nada que oír.</li></ul>
+<h2>Paso a paso con Observador BLE</h2>
+<ol><li><strong>Empieza una sesión</strong> desde la pantalla principal. Con la versión gratuita dura hasta 30 minutos, de sobra para esto.</li><li><strong>Busca por el nombre:</strong> escribe una parte, como «Buds», «AirPods», «WH-» o la marca. Si no anuncian nombre, prueba con el fabricante (Apple, Samsung, Sony…).</li><li><strong>Abre el mapa en directo.</strong> El móvil está en el centro, y cada punto se coloca según la fuerza de su señal: cuanto más cerca del centro, más fuerte. Toca el punto de tus auriculares y verás algo como «unos −70 dBm · unos 4 m».</li><li><strong>Muévete despacio</strong> y mira cómo cambia. Los dBm son negativos: −50 es más fuerte que −80. Si el número sube hacia −50, vas bien; si baja, das la vuelta. Para unos segundos en cada sitio, porque la señal fluctúa.</li><li><strong>Cuando ronde −45 o −40 dBm,</strong> estás prácticamente encima. Mira debajo de los cojines, en los bolsillos de las chaquetas y entre los asientos.</li></ol>
+<figure><img src="live-map.png" alt="El mapa en directo de Observador BLE: el móvil es el punto negro del centro, y cuanto más cerca está un punto, más fuerte es su señal." width="540" height="960" loading="lazy"><figcaption>El mapa en directo de Observador BLE: el móvil es el punto negro del centro, y cuanto más cerca está un punto, más fuerte es su señal.</figcaption></figure>
+<p><strong>Los metros son orientativos.</strong> Un cuerpo, una pared o un sofá restan bastante señal. Fíjate en si sube o baja, no en el número exacto.</p>
+<h2>Trucos</h2>
+<ul><li><strong>Baja el móvil a la altura del suelo o del sofá.</strong> La señal cambia mucho con la altura.</li><li><strong>Si hay muchos aparatos parecidos,</strong> como en una oficina llena de AirPods, quédate con el que cambia cuando te mueves tú. Los demás no reaccionan a tus pasos.</li><li><strong>Ojo con las direcciones que cambian:</strong> muchos auriculares cambian de dirección cada pocos minutos. La app intenta unir las direcciones del mismo aparato y lo indica, pero si el punto desaparece, búscalo otra vez por el nombre.</li></ul>
+<h2>Lo que no puede hacer</h2>
+<p>No encuentra auriculares apagados ni lejos: el Bluetooth llega a unas decenas de metros como mucho, menos con paredes. Tampoco hace sonar nada. Solo escucha.</p>
+<p class="note">Observador BLE es gratis en <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es&amp;referrer=utm_source%3Dguide_find_lost_earbuds_es">Google Play</a> (Android 13 o posterior; en la UE, Estados Unidos, Reino Unido, Canadá y Australia), con un Pro de pago único para sesiones largas y exportaciones.</p>
+</article>
+</main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z0-9_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
+</body>
+</html>

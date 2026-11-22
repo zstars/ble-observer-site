@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exportar un escaneo de Bluetooth LE a Excel o CSV desde un móvil Android</title>
+<meta name="description" content="Graba un escaneo de Bluetooth LE en Android y exporta cada anuncio a Excel, CSV o JSON: qué hay en cada hoja, un ejemplo con pandas y cómo compartirlo con seudónimos.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/export-ble-to-excel/es/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/export-ble-to-excel/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/export-ble-to-excel/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/export-ble-to-excel/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exportar un escaneo de Bluetooth LE a Excel o CSV desde un móvil Android">
+<meta property="og:description" content="Graba un escaneo de Bluetooth LE en Android y exporta cada anuncio a Excel, CSV o JSON: qué hay en cada hoja, un ejemplo con pandas y cómo compartirlo con seudónimos.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/export-ble-to-excel/es/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-es.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Exportar un escaneo de Bluetooth LE a Excel o CSV desde un móvil Android", "description": "Graba un escaneo de Bluetooth LE en Android y exporta cada anuncio a Excel, CSV o JSON: qué hay en cada hoja, un ejemplo con pandas y cómo compartirlo con seudónimos.", "inLanguage": "es", "datePublished": "2026-11-22", "url": "https://zstars.github.io/ble-observer-site/export-ble-to-excel/es/", "about": {"@type": "SoftwareApplication", "name": "Observador BLE", "operatingSystem": "Android 13+", "applicationCategory": "UtilitiesApplication", "url": "https://play.google.com/store/apps/details?id=com.lr.btobserver"}}</script>
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 1.2rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  li { margin: .3rem 0; }
+  code { font: .88em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card); padding: .1em .3em; border-radius: 4px; }
+  pre { background: var(--card); border-radius: 10px; padding: .9rem 1rem; overflow-x: auto; line-height: 1.45; }
+  pre code { background: none; padding: 0; font-size: .85rem; }
+  figure { margin: 1.5rem auto; max-width: 300px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  figcaption { color: var(--muted); font-size: .85rem; margin-top: .5rem; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../../#es">Observador BLE</a> · <a href="../" hreflang="en">English</a> · <a href="../../privacy/#es">Política de privacidad</a></nav>
+<article>
+<h1>Exportar un escaneo de Bluetooth LE a Excel o CSV desde un móvil Android</h1>
+<p>Casi todas las apps que escanean BLE muestran una lista en directo y ya está. Sirve para echar un vistazo, pero no para responder preguntas como estas:</p>
+<ul><li>¿Cada cuánto anuncia mi sensor, y se corta alguna vez?</li><li>¿Cómo cambia la señal durante una hora?</li><li>¿Qué aparatos había en cada sitio donde me paré?</li></ul>
+<p>Para eso hace falta cada anuncio en un archivo que se pueda abrir en Excel, pandas o R. Así se consigue desde un móvil Android con Observador BLE.</p>
+<h2>1. Graba una sesión</h2>
+<p>Empieza una sesión y deja el móvil donde quieras medir. La versión gratuita graba hasta 30 minutos; con Pro, 90 minutos, 4 u 8 horas, o hasta que la pares.</p>
+<p>Si vas cambiando de sitio, pon una <strong>marca</strong> en cada uno, como «mesa» o «sala de reuniones». La exportación las conserva, así que luego puedes filtrar por lugar.</p>
+<h2>2. Elige el formato</h2>
+<p>En el resumen de la sesión, toca <strong>Exportar</strong>:</p>
+<div class="tw"><table><thead><tr><th>Formato</th><th>Qué sale</th><th>Para qué</th></tr></thead><tbody><tr><td><strong>Excel (.xlsx)</strong></td><td>Una hoja por tabla, con filtros, fechas de verdad y números como números</td><td>Mirar y filtrar a mano</td></tr><tr><td><strong>CSV</strong></td><td>Un zip con un CSV por tabla, con <code>;</code> y coma decimal, o con <code>,</code> estándar</td><td>Hojas de cálculo en cualquier idioma, scripts</td></tr><tr><td><strong>JSON</strong></td><td>Un zip con un manifiesto de tamaños y sumas sha256</td><td>Reanalizar con código, con los bytes de cada anuncio</td></tr></tbody></table></div>
+<figure><img src="export-screen.png" alt="La pantalla de exportar: eliges el formato, la sesión entera o un sitio marcado, y luego la vista previa o guardar." width="540" height="960" loading="lazy"><figcaption>La pantalla de exportar: eliges el formato, la sesión entera o un sitio marcado, y luego la vista previa o guardar.</figcaption></figure>
+<p>La <strong>vista previa</strong> es gratis; guardar el archivo es parte de Pro.</p>
+<h2>3. Qué hay dentro</h2>
+<p>Los nombres de hojas y columnas van siempre en inglés, sea cual sea el idioma del móvil, para que las fórmulas y los scripts no fallen. La hoja <strong>Dictionary</strong> explica cada columna en el idioma de la app.</p>
+<ul><li><strong>Devices:</strong> una fila por dirección, con:<ul><li>el nombre anunciado y el fabricante declarado;</li><li>la primera y la última vez que se oyó;</li><li>cuántos anuncios llegaron;</li><li>la señal mínima, mediana y máxima (<code>rssi_min</code>, <code>rssi_median</code>, <code>rssi_max</code>);</li><li>las marcas en las que se oyó.</li></ul></li><li><strong>Advertisements:</strong> cada anuncio recibido, con:<ul><li>la hora local, la hora UTC y los milisegundos desde el inicio;</li><li>la señal en dBm;</li><li>los bytes originales en hexadecimal;</li><li>si el contenido cambió respecto al anterior de esa dirección.</li></ul></li><li><strong>Groups:</strong> qué direcciones que rotan cree la app que son el mismo aparato, y por qué.</li><li><strong>Beacons:</strong> iBeacon, AltBeacon y Eddystone, con sus identificadores, y la batería y la temperatura si envían telemetría.</li><li><strong>GATT:</strong> lo que la app leyó de los servicios de un aparato, si le pediste que se conectara.</li><li><strong>Marks</strong> y <strong>Events:</strong> los lugares que marcaste, y las pausas y los cortes con su causa, para que un hueco en los datos nunca sea un misterio.</li></ul>
+<h2>4. Un primer análisis en Python</h2>
+<pre><code>import pandas as pd
+
+ads = pd.read_excel("btobserver_sesion.xlsx", sheet_name="Advertisements")
+dev = pd.read_excel("btobserver_sesion.xlsx", sheet_name="Devices")
+
+# Mi sensor: intervalo entre anuncios y señal a lo largo del tiempo
+mio = dev.loc[dev["advertised_name"] == "MiSensor", "id"].iloc[0]
+s = ads[ads["id"] == mio].sort_values("ms_from_start")
+huecos = s["ms_from_start"].diff() / 1000
+print(huecos.describe())  # intervalo mediano en segundos y el hueco más largo
+s.plot(x="date_time", y="rssi_dbm")</code></pre>
+<h2>Compartir un archivo sin dar direcciones</h2>
+<p>Activa los <strong>seudónimos</strong> al exportar. Las direcciones, los nombres anunciados y los identificadores de balizas pasan a ser <code>DIR-0001</code>, <code>NAME-001</code> y <code>BEACON-001</code>, los mismos en todo el archivo, y tus notas no salen. Así puedes adjuntarlo a un informe de error o a un foro. Sigue sin ser anónimo, y el archivo lo dice.</p>
+<p class="note">Observador BLE es gratis en <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=es&amp;referrer=utm_source%3Dguide_export_ble_to_excel_es">Google Play</a> (Android 13 o posterior; en la UE, Estados Unidos, Reino Unido, Canadá y Australia), con un Pro de pago único para sesiones largas y exportaciones.</p>
+</article>
+</main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z0-9_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
+</body>
+</html>

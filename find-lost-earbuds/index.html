@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find lost Bluetooth earbuds with an Android phone</title>
+<meta name="description" content="Lost Bluetooth earbuds nearby? Use your Android phone to follow their signal strength (dBm) on a live map, step by step, and know when it works and when it doesn&#x27;t.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to find lost Bluetooth earbuds with an Android phone">
+<meta property="og:description" content="Lost Bluetooth earbuds nearby? Use your Android phone to follow their signal strength (dBm) on a live map, step by step, and know when it works and when it doesn&#x27;t.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/find-lost-earbuds/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to find lost Bluetooth earbuds with an Android phone", "description": "Lost Bluetooth earbuds nearby? Use your Android phone to follow their signal strength (dBm) on a live map, step by step, and know when it works and when it doesn't.", "inLanguage": "en", "datePublished": "2026-11-22", "url": "https://zstars.github.io/ble-observer-site/find-lost-earbuds/", "about": {"@type": "SoftwareApplication", "name": "BLE Observer", "operatingSystem": "Android 13+", "applicationCategory": "UtilitiesApplication", "url": "https://play.google.com/store/apps/details?id=com.lr.btobserver"}}</script>
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 1.2rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  li { margin: .3rem 0; }
+  code { font: .88em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card); padding: .1em .3em; border-radius: 4px; }
+  pre { background: var(--card); border-radius: 10px; padding: .9rem 1rem; overflow-x: auto; line-height: 1.45; }
+  pre code { background: none; padding: 0; font-size: .85rem; }
+  figure { margin: 1.5rem auto; max-width: 300px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  figcaption { color: var(--muted); font-size: .85rem; margin-top: .5rem; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../">BLE Observer</a> · <a href="es/" hreflang="es">Español</a> · <a href="../privacy/">Privacy policy</a></nav>
+<article>
+<h1>How to find lost Bluetooth earbuds with an Android phone</h1>
+<p>Your earbuds fell somewhere at home, in the car or between the sofa cushions. They are close, but you can't see them. If they still have battery, they are very likely still broadcasting over Bluetooth, and your phone can hear them. The strength of that signal tells you whether you are getting closer or further away.</p>
+<h2>First: try the official tools</h2>
+<ul><li><strong>AirPods:</strong> Apple's Find My app, on an iPhone or at icloud.com/find, plays a sound and shows where they were last heard.</li><li><strong>Android earbuds with Find Hub</strong> (formerly Find My Device), such as many Pixel Buds and Galaxy Buds: the Find Hub app can make them ring.</li><li><strong>Galaxy Buds:</strong> also from SmartThings Find.</li><li><strong>If your earbuds' own app has a "find my earbuds" option,</strong> use it first: making them ring is the fastest way.</li></ul>
+<p>If none of that works, or your earbuds don't have that option, read on.</p>
+<h2>When it works and when it doesn't</h2>
+<p>It works if the earbuds are <strong>on and broadcasting</strong>. In practice:</p>
+<ul><li><strong>It usually works:</strong> earbuds out of the case with some battery, or the case open. Many models announce themselves every few seconds while they are not connected to a phone.</li><li><strong>Disconnect them first:</strong> if they are still connected to your phone, some stop advertising. Turn off Bluetooth on that phone for a moment, or search from another one.</li><li><strong>It doesn't work:</strong> with a dead battery, or inside a closed case on many models. There is nothing left to hear.</li></ul>
+<h2>Step by step with BLE Observer</h2>
+<ol><li><strong>Start a session</strong> from the home screen. The free version lasts up to 30 minutes, which is plenty for this.</li><li><strong>Search by name:</strong> type part of it, such as "Buds", "AirPods", "WH-" or the brand. If they don't advertise a name, try the manufacturer (Apple, Samsung, Sony…).</li><li><strong>Open the live map.</strong> Your phone is in the centre, and each dot is placed by how strong its signal is: the closer to the centre, the stronger. Tap your earbuds' dot and you will see something like "about −70 dBm · about 4 m".</li><li><strong>Move slowly</strong> and watch it change. dBm values are negative: −50 is stronger than −80. If the number climbs towards −50, you are on the right track; if it drops, turn around. Pause for a few seconds at each spot, because the signal fluctuates.</li><li><strong>Around −45 or −40 dBm,</strong> you are practically on top of them. Check under the cushions, in jacket pockets and between car seats.</li></ol>
+<figure><img src="live-map.png" alt="BLE Observer&#x27;s live map: the phone is the black dot in the centre, and the closer a dot is, the stronger its signal." width="540" height="960" loading="lazy"><figcaption>BLE Observer's live map: the phone is the black dot in the centre, and the closer a dot is, the stronger its signal.</figcaption></figure>
+<p><strong>The metres are only a rough guide.</strong> A body, a wall or a sofa takes away a lot of signal. Watch whether it goes up or down, not the exact number.</p>
+<h2>Tips</h2>
+<ul><li><strong>Hold the phone low,</strong> at floor or sofa height. The signal changes a lot with height.</li><li><strong>If there are many similar devices,</strong> like an office full of AirPods, follow the one that changes when you move. The others don't react to your steps.</li><li><strong>Watch for changing addresses:</strong> many earbuds change their Bluetooth address every few minutes. The app tries to link addresses that belong to the same device and says so, but if the dot disappears, search for the name again.</li></ul>
+<h2>What it can't do</h2>
+<p>It can't find earbuds that are off or far away: Bluetooth reaches a few tens of metres at most, less through walls. It doesn't make anything ring either. It only listens.</p>
+<p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en&amp;referrer=utm_source%3Dguide_find_lost_earbuds_en">Google Play</a> (Android 13 or later; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports.</p>
+</article>
+</main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z0-9_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
+</body>
+</html>
