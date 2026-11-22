@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to scan iBeacon and Eddystone beacons with an Android phone: IDs and battery</title>
+<meta name="description" content="Scan iBeacon, Eddystone and AltBeacon beacons with an Android phone: read their identifiers and, if they send telemetry, battery and temperature.">
+<link rel="canonical" href="https://zstars.github.io/ble-observer-site/scan-ble-beacons/">
+<link rel="alternate" hreflang="en" href="https://zstars.github.io/ble-observer-site/scan-ble-beacons/">
+<link rel="alternate" hreflang="es" href="https://zstars.github.io/ble-observer-site/scan-ble-beacons/es/">
+<link rel="alternate" hreflang="x-default" href="https://zstars.github.io/ble-observer-site/scan-ble-beacons/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to scan iBeacon and Eddystone beacons with an Android phone: IDs and battery">
+<meta property="og:description" content="Scan iBeacon, Eddystone and AltBeacon beacons with an Android phone: read their identifiers and, if they send telemetry, battery and temperature.">
+<meta property="og:url" content="https://zstars.github.io/ble-observer-site/scan-ble-beacons/">
+<meta property="og:image" content="https://zstars.github.io/ble-observer-site/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to scan iBeacon and Eddystone beacons with an Android phone: IDs and battery", "description": "Scan iBeacon, Eddystone and AltBeacon beacons with an Android phone: read their identifiers and, if they send telemetry, battery and temperature.", "inLanguage": "en", "datePublished": "2026-11-22", "url": "https://zstars.github.io/ble-observer-site/scan-ble-beacons/", "about": {"@type": "SoftwareApplication", "name": "BLE Observer", "operatingSystem": "Android 13+", "applicationCategory": "UtilitiesApplication", "url": "https://play.google.com/store/apps/details?id=com.lr.btobserver"}}</script>
+<style>
+  :root { color-scheme: light dark; --fg: #1b1c20; --muted: #5d5f67; --bg: #fbfbfe; --line: #d9dae2; --accent: #0b57d0; --card: #f0f1f6; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e3e3e8; --muted: #a9abb4; --bg: #121317; --line: #33353c; --accent: #a8c7fa; --card: #1d1e23; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  nav { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 1.2rem; text-wrap: balance; }
+  h2 { font-size: 1.2rem; margin: 2.2rem 0 .5rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; }
+  li { margin: .3rem 0; }
+  code { font: .88em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card); padding: .1em .3em; border-radius: 4px; }
+  pre { background: var(--card); border-radius: 10px; padding: .9rem 1rem; overflow-x: auto; line-height: 1.45; }
+  pre code { background: none; padding: 0; font-size: .85rem; }
+  figure { margin: 1.5rem auto; max-width: 300px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  figcaption { color: var(--muted); font-size: .85rem; margin-top: .5rem; }
+  .note { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; margin-top: 2.5rem; }
+  .more { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: .5rem; }
+</style>
+</head>
+<body>
+<main>
+<nav class="muted"><a href="../">BLE Observer</a> · <a href="es/" hreflang="es">Español</a> · <a href="../privacy/">Privacy policy</a></nav>
+<article>
+<h1>How to scan iBeacon and Eddystone beacons with an Android phone: IDs and battery</h1>
+<p>You have installed beacons in a shop, a museum or an office, or you just received a test one, and you want to check that it is advertising, with which identifiers, and how much battery it has left. You don't need the manufacturer's app or a connection. Beacons broadcast their identifiers over Bluetooth LE, and your phone can hear them. Only some broadcast their battery: those that send Eddystone telemetry (TLM).</p>
+<h2>The three formats you will find</h2>
+<div class="tw"><table><thead><tr><th>Format</th><th>Defined by</th><th>What it broadcasts</th></tr></thead><tbody><tr><td><strong>iBeacon</strong></td><td>Apple</td><td>A UUID, a <strong>major</strong> and a <strong>minor</strong> number, and the expected power at 1 m</td></tr><tr><td><strong>Eddystone</strong></td><td>Google</td><td>Several frame types: <strong>UID</strong> (namespace and instance), <strong>URL</strong>, <strong>TLM</strong> (telemetry) and <strong>EID</strong> (an encrypted, changing identifier)</td></tr><tr><td><strong>AltBeacon</strong></td><td>Open specification</td><td>An identifier and the reference power, similar to iBeacon</td></tr></tbody></table></div>
+<p>Many beacons send more than one, for example iBeacon and Eddystone-TLM in turns.</p>
+<h2>Step by step with BLE Observer</h2>
+<ol><li><strong>Start a session</strong> near the beacons. The free version lasts up to 30 minutes.</li><li><strong>In the List view,</strong> scroll to the <strong>Beacons</strong> section, apart from named devices.</li><li><strong>Tap one</strong> to see its content, decoded from the advertisement:<ul><li><strong>iBeacon:</strong> UUID, major, minor and power at 1 m. If it is the Apple sample UUID the app knows (74278BDA-…), the List says so: it is common in generic beacons.</li><li><strong>Eddystone-UID:</strong> namespace and instance.</li><li><strong>Eddystone-URL:</strong> the address it broadcasts. The app shows it but never opens it.</li><li><strong>Eddystone-TLM:</strong> battery in millivolts, temperature, how many advertisements it has sent and how long it has been on.</li></ul></li><li><strong>Read the interval with care.</strong> The <strong>typical interval</strong> is the average time between the advertisements the phone heard. Android does not listen all the time and misses some, so it is usually longer than the configured one: it does not measure it.</li><li><strong>Walk with the live map</strong> to tell several beacons apart: the one in front of you is usually the strongest.</li></ol>
+<figure><img src="beacons.png" alt="Beacons in the List view, with simulated beacons." width="540" height="960" loading="lazy"><figcaption>Beacons in the List view, with simulated beacons.</figcaption></figure>
+<figure><img src="detail.png" alt="A simulated Eddystone beacon&#x27;s details: identifier, battery, temperature and time on." width="540" height="960" loading="lazy"><figcaption>A simulated Eddystone beacon's details: identifier, battery, temperature and time on.</figcaption></figure>
+<h2>Auditing every beacon in a building</h2>
+<p>For a large installation, record a session while you walk the building and add a <strong>mark</strong> in each room. Then, with Pro, export to Excel or CSV and <strong>turn pseudonyms off</strong>: they are on by default and replace the identifiers with codes like <code>BEACON-001</code>. The <strong>Beacons</strong> sheet has one row per beacon with:</p>
+<ul><li>the format and its identifiers (UUID, major and minor, or namespace and instance);</li><li>battery, temperature, advertisement count and time on, if it sends telemetry;</li><li>the declared power and the median received signal.</li></ul>
+<p>The <strong>Devices</strong> sheet says at which marks each address was heard, and when exporting you can also pick a single mark.</p>
+<p>Compare it with your own list to see which beacons were not heard, which have low battery, and which still carry a factory UUID. Not hearing one does not prove it is off.</p>
+<h2>What it doesn't do</h2>
+<ul><li><strong>It doesn't configure beacons.</strong> The app only listens: it never writes to a device. To change the UUID, interval or power, use the manufacturer's app.</li><li><strong>It doesn't open Eddystone URLs</strong> or contact any external service.</li><li><strong>It doesn't decrypt Eddystone-EID.</strong> That identifier is meant to be resolved only by its owner.</li><li><strong>Metres are a rough guide.</strong> The signal tells near, middle or far, not an exact position.</li></ul>
+<p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en&amp;referrer=utm_source%3Dguide_scan_ble_beacons_en">Google Play</a> (Android 13 or later; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports.</p>
+</article>
+<aside class="more"><h2>More to read</h2><ul><li><a href="../article/">What a phone hears: five hours of Bluetooth LE</a></li><li><a href="../find-lost-earbuds/">How to find lost Bluetooth earbuds with an Android phone</a></li><li><a href="../export-ble-to-excel/">Export a Bluetooth LE scan to Excel or CSV</a></li></ul></aside>
+</main>
+<script>
+// Pass ?ref=… from a post on to the Play link, so Play Console shows where installs came from.
+(function () {
+  var r = new URLSearchParams(location.search).get('ref');
+  if (!r || !/^[a-z0-9_]{1,40}$/.test(r)) return;
+  document.querySelectorAll('a[href*="play.google.com"]').forEach(function (a) {
+    a.href = a.href.replace(/utm_source%3D[a-z0-9_]+/, 'utm_source%3D' + r);
+  });
+})();
+</script>
+</body>
+</html>
