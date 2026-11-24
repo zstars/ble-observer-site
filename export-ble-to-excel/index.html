@@ -77,6 +77,9 @@ gaps = s["ms_from_start"].diff() / 1000
 print(gaps.describe())  # median in seconds, and the longest gap
 s.plot(x="date_time", y="rssi_dbm")</code></pre>
 <p><strong>This does not measure how often the sensor transmits.</strong> Android does not listen all the time and misses advertisements, so the time between received ones is usually longer than the real one, and a gap does not prove the sensor dropped out.</p>
+<h2>Asking an AI assistant about the session</h2>
+<p>You can also hand the file to an AI assistant and ask in plain words: "when did my sensor stop being heard?", "which devices were at the desk mark and not in the meeting room?", "did the payload of MySensor change during the session?". The Excel file works best, because its <strong>Dictionary</strong> sheet tells the assistant what each column means. Ask it to show the code or the rows behind each answer, and check them: the same caveat about missed advertisements applies.</p>
+<p>Uploading the file to an online assistant is sharing it with that service. Keep <strong>pseudonyms</strong> on unless you need the real names, and see the next section.</p>
 <h2>Sharing a file without giving away addresses</h2>
 <p>Leave <strong>pseudonyms</strong> on when exporting. Addresses, advertised names and beacon identifiers become <code>DIR-0001</code>, <code>NAME-001</code> and <code>BEACON-001</code>, the same across the whole file, and your notes are left out. Your labels and the names of your marks are included, and with the raw bytes a device can still be recognisable. It is not an anonymous file: check it before sharing.</p>
 <p class="note">BLE Observer is free on <a href="https://play.google.com/store/apps/details?id=com.lr.btobserver&amp;hl=en&amp;referrer=utm_source%3Dguide_export_ble_to_excel_en">Google Play</a> (Android 13 or later; in the EU, the US, the UK, Canada and Australia), with a one-time Pro for long sessions and exports.</p>
